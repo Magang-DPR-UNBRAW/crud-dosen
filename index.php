@@ -28,7 +28,7 @@ $result = $connection->query($sql);
     <div class="container mt-5">
         <div class="card shadow">
             <div class="card-header text-center">
-                <h2>Data Dosen</h2>
+                 <h2>Data Dosen</h2>
             </div>
             <div class="card-body">
                 <a href="add.php" class="btn btn-primary mb-3">Tambah Dosen</a>
@@ -40,6 +40,7 @@ $result = $connection->query($sql);
                             <th>No</th> <!-- Nomor urut dinamis -->
                             <th>Nama Dosen</th>
                             <th>NIP</th>
+                            <th>Jenis Kelamin</th>
                             <th>Mata Kuliah</th>
                             <th>Email</th>
                             <th>Aksi</th>
@@ -54,6 +55,7 @@ $result = $connection->query($sql);
                                         <td>" . $no . "</td> <!-- Urutan dinamis -->
                                         <td>" . $row['nama_dosen'] . "</td>
                                         <td>" . $row['nip'] . "</td>
+                                        <td>" . $row['jenis_kelamin'] . "</td>
                                         <td>" . $row['mata_kuliah'] . "</td>
                                         <td>" . $row['email'] . "</td>
                                         <td>

@@ -6,16 +6,18 @@ $id = $_GET['id'];
 $sql = "SELECT * FROM data_dosen WHERE id_dosen=$id";
 $result = $connection->query($sql);
 $data = $result->fetch_assoc();
-
+ 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nama_dosen = $_POST['nama_dosen'];
     $nip = $_POST['nip'];
+    $jenis_kelamin = $_POST['jenis_kelamin'];
     $mata_kuliah = $_POST['mata_kuliah'];
     $email = $_POST['email'];
 
     $sql = "UPDATE data_dosen SET 
             nama_dosen='$nama_dosen', 
-            nip='$nip', 
+            nip='$nip',
+            jenis_kelamin='$jenis_kelamin', 
             mata_kuliah='$mata_kuliah', 
             email='$email' 
             WHERE id_dosen=$id";
@@ -45,7 +47,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="mb-3">
                 <label for="nip" class="form-label">NIP</label>
-                <input type="text" name="nip" value="<?php echo $data['nip']; ?>" class="form-control" required>
+                <input type="number" name="nip" value="<?php echo $data['nip']; ?>" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+                <select name="jenis_kelamin" class="form-select" required>
+                    <option value="Laki-laki" <?php if ($data['jenis_kelamin'] == 'Laki-laki') echo 'selected'; ?>>Laki-laki</option>
+                    <option value="Perempuan" <?php if ($data['jenis_kelamin'] == 'Perempuan') echo 'selected'; ?>>Perempuan</option>
+                </select>
             </div>
             <div class="mb-3">
                 <label for="mata_kuliah" class="form-label">Mata Kuliah</label>
